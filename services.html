@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — AN Build</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .services-main { padding: 100px 60px; }
+
+  .services-intro {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start; margin-bottom: 100px;
+  }
+
+  .services-full-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: rgba(45,47,107,0.1);
+    margin-bottom: 80px;
+  }
+
+  .svc-card {
+    background: var(--cream); padding: 50px 44px;
+    border-top: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  .svc-card:hover { border-top-color: var(--navy); background: var(--white); }
+
+  .svc-icon {
+    width: 52px; height: 52px;
+    background: var(--navy); display: flex;
+    align-items: center; justify-content: center;
+    margin-bottom: 28px;
+  }
+  .svc-icon span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 300; color: var(--white);
+  }
+  .svc-num {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--warm); margin-bottom: 14px; font-weight: 500;
+  }
+  .svc-title { font-size: 22px; font-weight: 500; color: var(--charcoal); margin-bottom: 16px; }
+  .svc-body { font-size: 14px; font-weight: 300; line-height: 1.85; color: var(--mid); margin-bottom: 24px; }
+  .svc-list { list-style: none; }
+  .svc-list li {
+    font-size: 13px; font-weight: 300; color: var(--mid);
+    padding: 8px 0; border-bottom: 0.5px solid rgba(45,47,107,0.1);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .svc-list li::before { content: '—'; color: var(--warm); font-weight: 400; }
+
+  /* process strip */
+  .process-section {
+    background: var(--charcoal); padding: 100px 60px;
+  }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(5,1fr);
+    gap: 0; margin-top: 60px; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 36px; left: 10%; right: 10%; height: 1px;
+    background: rgba(255,255,255,0.1); z-index: 0;
+  }
+  .process-step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+  .process-circle {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; color: var(--white);
+    background: var(--charcoal);
+  }
+  .process-circle.active { background: var(--warm); border-color: var(--warm); }
+  .process-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 10px; }
+  .process-body { font-size: 12px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.4); }
+
+  @media (max-width: 900px) {
+    .services-main { padding: 60px 24px; }
+    .services-intro { grid-template-columns: 1fr; gap: 40px; }
+    .services-full-grid { grid-template-columns: 1fr; }
+    .process-section { padding: 60px 24px; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 30px; }
+    .process-steps::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="anlogo.jpeg" alt="AN Build Logo">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">AN Build</span>
+      <span class="nav-logo-sub">Holdings & Projects</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background: linear-gradient(135deg,rgba(26,26,26,0.82) 0%,rgba(45,47,107,0.55) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80') center/cover;"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <p class="page-hero-eyebrow">What We Offer</p>
+    <h1 class="page-hero-title">Our <em>Services</em></h1>
+  </div>
+</div>
+
+<div class="strip">
+  <span class="strip-label">Expertise</span>
+  <div class="strip-items">
+    <span class="strip-item">Property Development</span><span class="strip-item">·</span>
+    <span class="strip-item">Construction Management</span><span class="strip-item">·</span>
+    <span class="strip-item">Infrastructure</span><span class="strip-item">·</span>
+    <span class="strip-item">Asset Holdings</span><span class="strip-item">·</span>
+    <span class="strip-item">Project Finance</span><span class="strip-item">·</span>
+    <span class="strip-item">Design Oversight</span><span class="strip-item">·</span>
+    <span class="strip-item">Property Development</span><span class="strip-item">·</span>
+    <span class="strip-item">Construction Management</span><span class="strip-item">·</span>
+    <span class="strip-item">Infrastructure</span><span class="strip-item">·</span>
+    <span class="strip-item">Asset Holdings</span><span class="strip-item">·</span>
+  </div>
+</div>
+
+<section class="services-main">
+  <div class="services-intro reveal">
+    <div>
+      <p class="section-eyebrow">Our Expertise</p>
+      <h2 class="section-title">Comprehensive solutions for<br><em>every project</em></h2>
+    </div>
+    <div>
+      <p class="section-body">At AN Build, we provide an integrated suite of services that covers every phase of a project — from initial feasibility through to long-term asset management. Our multidisciplinary team brings together engineers, financiers, project managers, and design specialists under one roof.</p>
+      <p class="section-body">This integrated approach means fewer handoffs, clearer accountability, and consistently better outcomes for our clients.</p>
+    </div>
+  </div>
+
+  <div class="services-full-grid reveal">
+    <div class="svc-card">
+      <div class="svc-num">Service 01</div>
+      <h3 class="svc-title">Property Development</h3>
+      <p class="svc-body">Full-cycle residential and commercial development from land acquisition through to final handover — designed to maximise value, liveability, and return on investment.</p>
+      <ul class="svc-list">
+        <li>Land acquisition & feasibility</li>
+        <li>Residential developments</li>
+        <li>Commercial real estate</li>
+        <li>Mixed-use developments</li>
+        <li>Project handover & aftercare</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">Service 02</div>
+      <h3 class="svc-title">Construction Management</h3>
+      <p class="svc-body">End-to-end site management with certified engineers, quality-assured procurement, and rigorous timelines that protect your investment at every stage.</p>
+      <ul class="svc-list">
+        <li>Site supervision & coordination</li>
+        <li>Contractor management</li>
+        <li>Quality assurance & control</li>
+        <li>Health, safety & compliance</li>
+        <li>Cost & schedule management</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">Service 03</div>
+      <h3 class="svc-title">Infrastructure Projects</h3>
+      <p class="svc-body">Roads, bridges, utilities, and public-use structures built to last — combining local knowledge with international engineering standards.</p>
+      <ul class="svc-list">
+        <li>Road construction & rehabilitation</li>
+        <li>Water & drainage systems</li>
+        <li>Electrical infrastructure</li>
+        <li>Public facilities</li>
+        <li>Government & NGO projects</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">Service 04</div>
+      <h3 class="svc-title">Asset Holdings & Investment</h3>
+      <p class="svc-body">Strategic acquisition, management, and optimisation of property portfolios to deliver consistent long-term financial returns.</p>
+      <ul class="svc-list">
+        <li>Portfolio acquisition strategy</li>
+        <li>Asset performance monitoring</li>
+        <li>Rental & lease management</li>
+        <li>Portfolio restructuring</li>
+        <li>Exit & divestment advisory</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">Service 05</div>
+      <h3 class="svc-title">Project Finance Advisory</h3>
+      <p class="svc-body">Structuring finance, joint ventures, and public-private partnerships to bring ambitious projects from concept to groundbreaking.</p>
+      <ul class="svc-list">
+        <li>Finance structuring</li>
+        <li>Joint venture facilitation</li>
+        <li>PPP advisory</li>
+        <li>Investor relations</li>
+        <li>Risk assessment & mitigation</li>
+      </ul>
+    </div>
+    <div class="svc-card">
+      <div class="svc-num">Service 06</div>
+      <h3 class="svc-title">Architectural & Design Oversight</h3>
+      <p class="svc-body">Curating design teams, reviewing technical drawings, and ensuring every built environment reflects beauty, function, and structural soundness.</p>
+      <ul class="svc-list">
+        <li>Design team curation</li>
+        <li>Drawing review & approval</li>
+        <li>Interior design coordination</li>
+        <li>Landscape planning</li>
+        <li>Sustainability integration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div style="padding: 0;">
+    <p class="section-eyebrow" style="color:var(--warm-light)">How It Works</p>
+    <h2 class="section-title" style="color:var(--white)">Our <em style="color:var(--warm-light)">Process</em></h2>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="process-circle active">1</div>
+      <h4 class="process-title">Initial Consultation</h4>
+      <p class="process-body">We listen to your vision, goals, and constraints before proposing any solution.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-circle">2</div>
+      <h4 class="process-title">Feasibility & Planning</h4>
+      <p class="process-body">Site analysis, financial modelling, and regulatory review.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-circle">3</div>
+      <h4 class="process-title">Design & Approvals</h4>
+      <p class="process-body">Coordinating architects, engineers, and local authorities.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-circle">4</div>
+      <h4 class="process-title">Construction</h4>
+      <p class="process-body">On-site execution with daily oversight and transparent reporting.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-circle">5</div>
+      <h4 class="process-title">Handover & Support</h4>
+      <p class="process-body">Structured handover with ongoing aftercare and asset management.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="reveal">
+    <h2 class="cta-title">Ready to get<br><em>started?</em></h2>
+    <p class="cta-sub">Tell us about your project and we will respond within 24 hours.</p>
+  </div>
+  <a href="contact.html" class="cta-btn reveal">Get in Touch</a>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><img src="anlogo.jpeg" alt="AN Build" class="footer-logo"><div class="footer-brand-name">AN Build</div><div class="footer-brand-sub">Ashie Holdings and Projects U Ltd</div><p class="footer-brand-desc">A Ugandan holding and construction company committed to delivering enduring value.</p></div>
+    <div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="services.html">Property Development</a></li><li><a href="services.html">Construction Mgmt</a></li><li><a href="services.html">Infrastructure</a></li><li><a href="services.html">Asset Holdings</a></li></ul></div>
+    <div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><div class="footer-contact-label">Email</div>info@anbuild.co.ug</div><div class="footer-contact-item"><div class="footer-contact-label">Phone</div>+256 700 000 000</div><div class="footer-contact-item"><div class="footer-contact-label">Location</div>Kampala, Uganda</div></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">© 2025 Ashie Holdings and Projects U Ltd. All rights reserved.</p><p class="footer-reg">Registered in Uganda · AN Build is a trading name</p></div>
+</footer>
+
+<script>
+  const reveals=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
+  reveals.forEach(r=>io.observe(r));
+</script>
+</body>
+</html>
