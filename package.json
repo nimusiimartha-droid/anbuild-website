@@ -1,0 +1,12 @@
+{
+  "name": "anbuild-website",
+  "version": "1.0.0",
+  "description": "AN Build — Official Website",
+  "scripts": {
+    "dev": "npx http-server -p 8000 -o",
+    "start": "npx http-server -p 8000"
+  },
+  "keywords": ["construction", "property", "uganda"],
+  "author": "AN Build",
+  "license": "MIT"
+}
