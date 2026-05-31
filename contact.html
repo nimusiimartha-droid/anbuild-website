@@ -3,123 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — AN Build</title>
+<title>Contact Us — AN Build</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  .contact-main {
-    padding: 100px 60px;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 100px; align-items: start;
+  /* ── PAGE HEADER ── */
+  .contact-header {
+    padding: 80px 60px 60px;
+    text-align: center;
+    border-bottom: 0.5px solid rgba(45,47,107,0.1);
   }
-
-  .contact-info {}
-
-  .contact-detail {
-    display: flex; gap: 20px; align-items: flex-start;
-    padding: 28px 0; border-bottom: 0.5px solid rgba(45,47,107,0.12);
+  .contact-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--warm); font-weight: 500; margin-bottom: 18px;
   }
-  .contact-detail:first-of-type { border-top: 0.5px solid rgba(45,47,107,0.12); }
-
-  .contact-icon {
-    width: 44px; height: 44px; background: var(--navy);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
+  .contact-eyebrow::before {
+    content: ''; width: 10px; height: 10px;
+    background: var(--warm); border-radius: 2px; display: block;
+  }
+  .contact-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18px; color: var(--white); font-weight: 300;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 300; color: var(--charcoal); line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .contact-subtitle {
+    font-size: 14px; font-weight: 300; color: var(--mid);
+    line-height: 1.8; max-width: 400px; margin: 0 auto;
   }
 
-  .contact-detail-label {
-    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--warm); margin-bottom: 6px; font-weight: 500;
+  /* ── MAIN GRID ── */
+  .contact-body {
+    background: #f0f0f0;
+    padding: 48px 60px;
   }
-  .contact-detail-value {
-    font-size: 15px; font-weight: 300; color: var(--charcoal); line-height: 1.6;
-  }
-  .contact-detail-sub {
-    font-size: 12px; color: var(--mid); margin-top: 3px; font-weight: 300;
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
 
-  /* form */
-  .contact-form-wrap {}
-
-  .form-title {
+  /* ── FORM CARD ── */
+  .form-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 48px 44px;
+  }
+  .form-card-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 32px; font-weight: 300; color: var(--charcoal);
-    margin-bottom: 32px; line-height: 1.2;
+    margin-bottom: 36px;
   }
-  .form-title em { font-style: italic; color: var(--navy); }
 
-  .form-group { margin-bottom: 20px; }
+  .form-group { margin-bottom: 22px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
   label {
-    display: block; font-size: 10px; font-weight: 500;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--mid); margin-bottom: 8px;
+    display: block;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--warm); margin-bottom: 8px;
   }
-
-  input, textarea, select {
-    width: 100%; padding: 14px 16px;
-    background: var(--cream-dark);
-    border: 0.5px solid rgba(45,47,107,0.2);
+  input, textarea {
+    width: 100%; padding: 12px 14px;
+    background: #f8f8f8;
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
     font-family: 'Barlow', sans-serif;
-    font-size: 14px; font-weight: 300;
+    font-size: 13px; font-weight: 300;
     color: var(--charcoal); outline: none;
     transition: border-color 0.2s;
-    appearance: none;
   }
-  input:focus, textarea:focus, select:focus {
+  input::placeholder, textarea::placeholder { color: #aaa; }
+  input:focus, textarea:focus {
     border-color: var(--navy);
     background: var(--white);
   }
-  textarea { height: 140px; resize: vertical; }
+  textarea { height: 130px; resize: vertical; }
 
   .form-submit {
-    width: 100%; padding: 18px;
-    background: var(--navy); color: var(--white);
-    border: none; cursor: pointer;
+    width: 100%; padding: 16px;
+    background: var(--charcoal); color: var(--white);
+    border: none; border-radius: 2px; cursor: pointer;
     font-family: 'Barlow', sans-serif;
     font-size: 11px; font-weight: 500;
     letter-spacing: 2.5px; text-transform: uppercase;
-    transition: background 0.2s; margin-top: 8px;
+    transition: background 0.2s; margin-top: 6px;
   }
-  .form-submit:hover { background: var(--navy-dark); }
-
-  .form-note {
-    font-size: 12px; font-weight: 300; color: var(--mid);
-    margin-top: 14px; line-height: 1.6;
-  }
+  .form-submit:hover { background: var(--navy); }
 
   .success-msg {
     display: none; background: #e8f5e9;
     border-left: 3px solid #4caf50;
-    padding: 16px 20px; margin-top: 16px;
-    font-size: 14px; color: #2e7d32;
+    padding: 14px 18px; margin-top: 14px;
+    font-size: 13px; color: #2e7d32; border-radius: 2px;
   }
 
-  /* map placeholder */
-  .map-section { background: var(--navy-dark); height: 360px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .map-pin {
-    text-align: center; color: rgba(255,255,255,0.6);
+  /* ── INFO CARDS ── */
+  .info-col {
+    display: flex; flex-direction: column; gap: 16px;
   }
-  .map-pin-icon {
+
+  .info-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 32px 28px;
+  }
+  .info-card-icon {
+    width: 52px; height: 52px;
+    background: #fff5ee;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .info-card-icon svg { color: var(--warm); }
+
+  .info-card-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 60px; font-weight: 300; color: var(--warm); line-height: 1;
+    font-size: 20px; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 10px;
   }
-  .map-pin-label {
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: rgba(255,255,255,0.5); margin-top: 12px;
+  .info-card-body {
+    font-size: 13px; font-weight: 300;
+    color: var(--mid); line-height: 1.7;
   }
-  .map-bg {
-    position: absolute; inset: 0;
-    background: 
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+  .info-card-body a {
+    color: var(--warm); text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .info-card-body a:hover { opacity: 0.75; }
+
+  .info-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+
+  /* ── MAP ── */
+  .map-section {
+    width: 100%; height: 420px;
+    border-top: 0.5px solid rgba(45,47,107,0.1);
+  }
+  .map-section iframe {
+    width: 100%; height: 100%; border: none; display: block;
   }
 
   @media (max-width: 900px) {
-    .contact-main { grid-template-columns: 1fr; padding: 60px 24px; gap: 60px; }
-    .form-row { grid-template-columns: 1fr; }
+    .contact-header { padding: 48px 24px 40px; }
+    .contact-body { padding: 32px 16px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+    .info-row { grid-template-columns: 1fr; }
+    .map-section { height: 300px; }
   }
 </style>
 </head>
@@ -133,136 +168,188 @@
       <span class="nav-logo-sub">Holdings & Projects</span>
     </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="projects.html">Projects</a></li>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
     <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
     <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
   </ul>
 </nav>
 
-<div class="page-hero">
-  <div class="page-hero-bg" style="background: linear-gradient(135deg,rgba(26,26,26,0.82) 0%,rgba(45,47,107,0.55) 100%), url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80') center/cover;"></div>
-  <div class="page-hero-overlay"></div>
-  <div class="page-hero-content">
-    <p class="page-hero-eyebrow">Reach Out</p>
-    <h1 class="page-hero-title">Contact<br><em>Us</em></h1>
+<div style="height:72px;"></div>
+
+<!-- HEADER -->
+<div class="contact-header reveal">
+  <p class="contact-eyebrow">Contact Us</p>
+  <h1 class="contact-title">Let's Work Together</h1>
+  <p class="contact-subtitle">Reach out to our team for enquiries, project consultations, or more information about our services.</p>
+</div>
+
+<!-- FORM + INFO -->
+<div class="contact-body">
+  <div class="contact-grid">
+
+    <!-- Form -->
+    <div class="form-card reveal">
+      <h2 class="form-card-title">Write to Us</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="Your full name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+256 700 000 000">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="example@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Write your message here..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <div class="success-msg" id="successMsg">✓ Message sent! We'll be in touch within 24 hours.</div>
+      </form>
+    </div>
+
+    <!-- Info cards -->
+    <div class="info-col reveal">
+
+      <div class="info-card">
+        <div class="info-card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <div class="info-card-title">Our Office</div>
+        <div class="info-card-body">
+          Makerere Kikoni<br>
+          Kampala, Uganda
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="info-card-title">Email</div>
+          <div class="info-card-body">
+            <a href="mailto:info@anbuild.co.ug">info@anbuild.co.ug</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-.56a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div class="info-card-title">Phone</div>
+          <div class="info-card-body">
+            <a href="tel:+256700000000">+256 700 000 000</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
-<section class="contact-main">
-  <div class="reveal">
-    <p class="section-eyebrow">Get in Touch</p>
-    <h2 class="section-title">Let's build<br>something <em>great</em></h2>
-    <p class="section-body">Whether you have a project in mind, want to explore a partnership, or simply want to learn more about what we do — we'd love to hear from you.</p>
-
-    <div class="contact-detail">
-      <div class="contact-icon">@</div>
-      <div>
-        <div class="contact-detail-label">Email</div>
-        <div class="contact-detail-value">info@anbuild.co.ug</div>
-        <div class="contact-detail-sub">We respond within 24 hours on business days</div>
-      </div>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">✆</div>
-      <div>
-        <div class="contact-detail-label">Phone</div>
-        <div class="contact-detail-value">+256 700 000 000</div>
-        <div class="contact-detail-sub">Mon–Fri, 8:00 AM – 5:00 PM EAT</div>
-      </div>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">⌖</div>
-      <div>
-        <div class="contact-detail-label">Office</div>
-        <div class="contact-detail-value">Kampala, Uganda</div>
-        <div class="contact-detail-sub">Visits by appointment only</div>
-      </div>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-icon">◎</div>
-      <div>
-        <div class="contact-detail-label">Registration</div>
-        <div class="contact-detail-value">Ashie Holdings and Projects U Ltd</div>
-        <div class="contact-detail-sub">Registered in Uganda</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="contact-form-wrap reveal">
-    <h3 class="form-title">Send us a<br><em>message</em></h3>
-    <form id="contactForm">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" placeholder="John" required>
-        </div>
-        <div class="form-group">
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" placeholder="Doe" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="john@example.com" required>
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" placeholder="+256 700 000 000">
-      </div>
-      <div class="form-group">
-        <label for="service">Service of Interest</label>
-        <select id="service">
-          <option value="">Select a service...</option>
-          <option>Property Development</option>
-          <option>Construction Management</option>
-          <option>Infrastructure Projects</option>
-          <option>Asset Holdings & Investment</option>
-          <option>Project Finance Advisory</option>
-          <option>Design Oversight</option>
-          <option>General Enquiry</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea id="message" placeholder="Tell us about your project, timeline, and budget..." required></textarea>
-      </div>
-      <button type="submit" class="form-submit">Send Message →</button>
-      <p class="form-note">Your information is kept strictly confidential and will never be shared with third parties.</p>
-      <div class="success-msg" id="successMsg">✓ Thank you! Your message has been sent. We will be in touch within 24 hours.</div>
-    </form>
-  </div>
-</section>
-
+<!-- MAP -->
 <div class="map-section">
-  <div class="map-bg"></div>
-  <div class="map-pin">
-    <div class="map-pin-icon">⊕</div>
-    <div class="map-pin-label">Kampala, Uganda</div>
-  </div>
+  <iframe
+    src="https://maps.google.com/maps?q=Makerere+Kikoni,+Kampala,+Uganda&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title="AN Build Office Location — Makerere Kikoni, Kampala">
+  </iframe>
 </div>
 
 <footer>
-  <div class="footer-top">
-    <div><img src="anlogo.jpeg" alt="AN Build" class="footer-logo"><div class="footer-brand-name">AN Build</div><div class="footer-brand-sub">Ashie Holdings and Projects U Ltd</div><p class="footer-brand-desc">A Ugandan holding and construction company committed to delivering enduring value.</p></div>
-    <div><h4 class="footer-col-title">Company</h4><ul class="footer-links"><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="projects.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-    <div><h4 class="footer-col-title">Services</h4><ul class="footer-links"><li><a href="services.html">Property Development</a></li><li><a href="services.html">Construction Mgmt</a></li><li><a href="services.html">Infrastructure</a></li><li><a href="services.html">Asset Holdings</a></li></ul></div>
-    <div><h4 class="footer-col-title">Contact</h4><div class="footer-contact-item"><div class="footer-contact-label">Email</div>info@anbuild.co.ug</div><div class="footer-contact-item"><div class="footer-contact-label">Phone</div>+256 700 000 000</div><div class="footer-contact-item"><div class="footer-contact-label">Location</div>Kampala, Uganda</div></div>
+  <div class="footer-main">
+    <div>
+      <img src="anlogo.jpeg" alt="AN Build" class="footer-logo-img">
+      <div class="footer-brand-name-lg">AN Build</div>
+      <p class="footer-tagline">Uganda's leading construction and development company for Property Development, Construction Management, and Infrastructure Projects across East Africa.</p>
+    </div>
+    <div>
+      <h4 class="footer-col-head">Email Us</h4>
+      <a href="mailto:info@anbuild.co.ug" class="footer-email-link">info@anbuild.co.ug</a>
+    </div>
+    <div>
+      <h4 class="footer-col-head">Our Office</h4>
+      <div class="footer-office-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Makerere Kikoni, Kampala, Uganda
+      </div>
+      <div class="footer-office-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.28-.56a2 2 0 012.11.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +256 700 000 000
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom"><p class="footer-copy">© 2025 Ashie Holdings and Projects U Ltd. All rights reserved.</p><p class="footer-reg">Registered in Uganda · AN Build is a trading name</p></div>
+  <div class="footer-nav-row">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
+  <div class="footer-bottom-row">
+    <p class="footer-copy-text">© 2025 Ashie Holdings and Projects U Ltd. All rights reserved. · Registered in Uganda</p>
+    <div class="footer-socials">
+      <a href="#" class="footer-social-btn" aria-label="Facebook">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="#" class="footer-social-btn" aria-label="Instagram">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" class="footer-social-btn" aria-label="LinkedIn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const reveals=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
-  reveals.forEach(r=>io.observe(r));
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((e) => {
+    e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } });
+  }, { threshold: 0.05 });
+  reveals.forEach(r => io.observe(r));
 
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     document.getElementById('successMsg').style.display = 'block';
     this.reset();
     setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 6000);
+  });
+
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
   });
 </script>
 </body>
