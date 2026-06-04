@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AN Build — Construction Company</title>
+<title>AN Build — Building for Tomorrow</title>
 <link rel="stylesheet" href="style.css">
 <style>
   /* ─── HERO ─── */
@@ -267,7 +267,7 @@
     <img src="anlogo.jpeg" alt="AN Build Logo">
     <div class="nav-logo-text">
       <span class="nav-logo-name">AN Build</span>
-      <span class="nav-logo-sub">Construction Company</span>
+      <span class="nav-logo-sub">Building for Tomorrow</span>
     </div>
   </a>
   <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
@@ -338,7 +338,7 @@
   <div class="about-visual reveal">
     <div class="about-img-main">
     </div>
-    <div class="about-badge">AN Build<br>Construction Company</div>
+    <div class="about-badge">AN Build<br>Building for Tomorrow</div>
     <div class="about-img-accent"></div>
   </div>
   <div class="about-text reveal">
@@ -428,7 +428,7 @@
     <div>
       <img src="anlogo.jpeg" alt="AN Build" class="footer-logo">
       <div class="footer-brand-name">AN Build</div>
-      <div class="footer-brand-sub">Construction Company</div>
+      <div class="footer-brand-sub">Building for Tomorrow</div>
       <p class="footer-brand-desc">A Ugandan construction company committed to delivering enduring value through exceptional projects across Kampala and Uganda.</p>
     </div>
     <div>
@@ -499,6 +499,18 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(r => io.observe(r));
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
   const nav = document.querySelector('nav');
   window.addEventListener('scroll', () => {
     nav.style.background = window.scrollY > 60 ? 'rgba(245,242,236,0.98)' : 'rgba(245,242,236,0.95)';
